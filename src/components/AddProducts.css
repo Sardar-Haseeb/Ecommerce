@@ -1,0 +1,61 @@
+/* src/pages/AddProducts.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.add-products {
+    padding: 2rem;
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.add-products-title {
+    text-align: center;
+    color: #1a1a1a; /* Matte black */
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Space between form fields */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 0.5rem; /* Space below label */
+    color: #1a1a1a; /* Matte black */
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%; /* Full width */
+    padding: 10px;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding in total width/height */
+}
+
+input[type="file"] {
+    margin-top: 0.5rem; /* Space above file input */
+}
+
+.error-message {
+    color: red; /* Red color for error messages */
+    text-align: center;
+}
+
+.submit-button {
+    background-color: #1a1a1a; /* Matte black button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Full width for submit button */
+}
+
+.submit-button:hover {
+    background-color: #444; /* Lighter on hover */
+}

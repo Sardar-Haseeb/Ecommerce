@@ -1,0 +1,36 @@
+/* src/pages/Shop.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+}
+
+.shop {
+  padding: 2rem;
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+.shop-title {
+  text-align: center;
+  color: #1a1a1a; /* Matte black */
+  font-size: 2.5rem; /* Title font size */
+  margin-bottom: 2rem; /* Margin below title */
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 1rem; /* Gap between products */
+}
+
+.loading {
+  text-align: center;
+  color: #1a1a1a; /* Matte black */
+}
+
+.error {
+  text-align: center;
+  color: red; /* Error color */
+}
+
+/* Add additional styles for product cards, if needed */

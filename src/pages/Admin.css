@@ -1,0 +1,29 @@
+/* src/Admin/Admin.css */
+.admin-container {
+    text-align: center;
+  }
+  
+  .adminHeader {
+    margin-bottom: 20px;
+  }
+  
+  .adminHeader a {
+    padding: 10px 15px;
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .adminHeader a:hover {
+    text-decoration: underline;
+  }
+  
+  .toggle-btn {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1rem;
+  }
+  

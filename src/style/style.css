@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e; /* Matte black background */
+  color: #ffffff; /* White text */
+}
+
+header {
+  background-color: #1a1a1a; /* Slightly lighter matte black for the header */
+  padding: 1rem 2rem; /* Adjust padding as needed */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+header a {
+  color: white; /* White links */
+  text-decoration: none; /* No underline */
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+header a:hover {
+  color: #e0e0e0; /* Light gray on hover */
+}
+
+.cart-count {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  background-color: #ff4d4d; /* Red background for cart count */
+  color: white; /* White text for cart count */
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem; /* Smaller font for cart count */
+}
+
+
+
+.footer {
+  background-color: #1a1a1a; /* Matte black background for footer */
+  color: white; /* White text color */
+  text-align: center; /* Center align text */
+  padding: 1rem; /* Add padding */
+  margin-top: 2rem; /* Space above the footer */
+  border-top: 1px solid #333; /* Optional: border for separation */
+}
+
+.footer p {
+  margin: 0; /* Remove default margin */
+  font-size: 0.9rem; /* Adjust font size if needed */
+}

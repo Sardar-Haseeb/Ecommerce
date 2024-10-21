@@ -1,0 +1,98 @@
+/* src/components/Cart.css */
+
+.cart-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.empty-cart {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+.cart-items {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item:hover {
+  background-color: #f1f1f1;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.item-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: #0056b3; /* Darker blue on focus */
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+button:hover {
+  opacity: 0.9; /* Slight opacity on hover */
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.checkout-button {
+  background-color: #28a745; /* Green color for checkout */
+  color: white;
+}
+
+.checkout-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}

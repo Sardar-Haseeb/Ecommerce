@@ -1,0 +1,252 @@
+/* Global styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  /* light background */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  /* Replace with a relevant image */
+  background-size: cover;
+  background-position: center center;
+  color: white;
+  padding: 20rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero button {
+  background-color: #1a202c;
+  /* dark button */
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero button:hover {
+  background-color: #2d3748;
+  /* slightly lighter */
+}
+
+/* Categories Section */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+}
+
+.category {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.category h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.category p {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  /* gray text */
+}
+
+.category a {
+  background-color: #3182ce;
+  /* blue button */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.category a:hover {
+  background-color: #2b6cb0;
+  /* darker blue */
+}
+
+.men {
+  position: relative; /* Set the container's position to relative */
+  background-image: url(https://media.istockphoto.com/id/687572186/photo/handsome-young-man-in-shopping.jpg?s=612x612&w=0&k=20&c=P5__LphyJf3BZd4ha1SKHgzv1UC_7foYccB9L6-29Qo=);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white; /* Ensure text color stands out */
+  z-index: 1; /* Ensure content stays above the overlay */
+}
+
+.men::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity for the overlay */
+  z-index: -1; /* Ensure the overlay stays behind the content */
+}
+
+
+.women {
+  position: relative; /* Set the container's position to relative */
+  background-image: url(https://media.istockphoto.com/id/683740686/photo/shopping-time-young-woman-in-shopping-looking-for-presents-consumerism-shopping-lifestyle.jpg?s=612x612&w=0&k=20&c=FHT4xUsPP8ZTbDScva0BJhLfDaa2oNjqF7JQ1Df7kZM=);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white; /* Ensure text color stands out */
+  z-index: 1; /* Ensure content stays above the overlay */
+}
+
+.women::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity for the overlay */
+  z-index: -1; /* Ensure the overlay stays behind the content */
+}
+
+
+
+
+
+.kid {
+  position: relative; /* Set the container's position to relative */
+  background-image: url(https://t3.ftcdn.net/jpg/02/11/82/88/360_F_211828832_OnMaambs24g0vZM8HLjqZ8tU5wH4y1oD.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: white; /* Ensure text color stands out */
+  z-index: 1; /* Ensure content stays above the overlay */
+}
+
+.kid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity for the overlay */
+  z-index: -1; /* Ensure the overlay stays behind the content */
+}
+
+
+
+.products {
+  padding: 2rem;
+}
+
+.products h2 {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.product-card h3 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #3182ce; /* blue */
+}
+
+.product-card button {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+  background-color: #2b6cb0;
+} 

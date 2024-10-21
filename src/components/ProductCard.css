@@ -1,0 +1,42 @@
+/* src/components/ProductCard.css */
+.product-card {
+  background-color: white; /* White background for product card */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+
+.product-image {
+  max-width: 100%; /* Responsive image */
+  height: auto;
+}
+
+.product-name {
+  color: #1a1a1a; /* Matte black */
+  font-size: 1.2rem; /* Product name font size */
+}
+
+.product-price {
+  color: #555; /* Darker gray for price */
+  font-size: 1rem; /* Price font size */
+}
+
+.add-to-cart-btn {
+  background-color: #1a1a1a; /* Matte black button */
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #444; /* Lighter on hover */
+}

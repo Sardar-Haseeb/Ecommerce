@@ -1,0 +1,69 @@
+/* src/pages/Mens.css */
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.product-card {
+    background-color: #ffffff; /* White background for product cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    overflow: hidden; /* Clip the corners */
+    transition: transform 0.3s ease; /* Smooth scaling effect */
+    margin: 10px;
+    width: calc(33% - 20px); /* Responsive sizing, three items per row with spacing */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+}
+
+.product-card img {
+    width: 100%; /* Ensure images fill the card width */
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: cover; /* Cover to maintain aspect ratio */
+}
+
+.product-card h3 {
+    margin: 10px;
+    font-size: 1.25rem; /* Increase heading size */
+    color: #2c3e50; /* Darker color for contrast */
+}
+
+.product-card p {
+    margin: 0 10px 10px 10px; /* Bottom margin for spacing */
+    font-size: 1.1rem; /* Consistent font size for pricing */
+    color: #28a745; /* Green for price indication */
+}
+
+button {
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 10px 15px; /* Padding for button */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for hover effects */
+    font-size: 1rem; /* Consistent font size */
+    margin: 0 10px 10px 10px; /* Spacing */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+button:focus {
+    outline: none; /* Remove focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow effect on focus */
+}
+
+h2 {
+    text-align: center;
+    color: white; /* Darker heading color */
+    margin: 20px 0; /* Vertical margin for spacing */
+}
