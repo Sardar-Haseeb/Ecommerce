@@ -1,46 +1,119 @@
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
-}
-body {
-  font-family: 'Montserrat', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #1e1e1e; /* Matte black background */
-  color: #ffffff; /* White text */
+  box-sizing: border-box;
 }
 
-header {
-  background-color: #1a1a1a; /* Slightly lighter matte black for the header */
-  padding: 1rem 2rem; /* Adjust padding as needed */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Header Styles */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #000;
+  padding: 1rem;
+  color: #fff;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-nav-item {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.header-nav-item:hover {
+  color: #ccc;
+}
+
+/* Cart Icon */
+.header-cart {
   position: relative;
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
-header a {
-  color: white; /* White links */
-  text-decoration: none; /* No underline */
-  margin: 0 1rem;
-  font-weight: 500;
-  transition: color 0.3s; /* Smooth transition for hover effect */
-}
-
-header a:hover {
-  color: #e0e0e0; /* Light gray on hover */
+.header-cart-icon {
+  font-size: 1.8rem;
 }
 
 .cart-count {
   position: absolute;
   top: -10px;
-  right: -15px;
-  background-color: #ff4d4d; /* Red background for cart count */
-  color: white; /* White text for cart count */
+  right: -10px;
+  background-color: red;
+  color: white;
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
-  font-size: 0.75rem; /* Smaller font for cart count */
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .header-nav-item {
+    padding: 0.5rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1.2rem;
+  }
+
+  .header-cart {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .header-logo {
+    font-size: 1.2rem;
+  }
+
+  .header-nav-item {
+    font-size: 1rem;
+  }
+
+  .header-cart-icon {
+    font-size: 1.5rem;
+  }
+
+  .cart-count {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
 }
 
 
