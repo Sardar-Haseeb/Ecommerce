@@ -1,10 +1,13 @@
 // src/pages/Home.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
+import { Link } from 'react-router-dom'; // Import Link
+import { CartContext } from '../context/CartContext'; // Import CartContext
 import './Home.css'; // Import CSS file
 
 const Home = () => {
+  const { addToCart } = useContext(CartContext); // Use CartContext
   const [products, setProducts] = useState({ men: [], women: [], kid: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -62,17 +65,17 @@ const Home = () => {
           <div className="category men">
             <h2>Men's</h2>
             <p>Explore men's fashion</p>
-            <a href="/mens" className="shop-link">Shop Now</a>
+            <Link to="/mens" className="shop-link">Shop Now</Link>
           </div>
           <div className="category women">
             <h2>Women's</h2>
             <p>Explore women's fashion</p>
-            <a href="/womens" className="shop-link">Shop Now</a>
+            <Link to="/womens" className="shop-link">Shop Now</Link>
           </div>
           <div className="category kid">
             <h2>Kids</h2>
             <p>Explore kids' fashion</p>
-            <a href="/kids" className="shop-link">Shop Now</a>
+            <Link to="/kids" className="shop-link">Shop Now</Link>
           </div>
         </section>
 
@@ -83,10 +86,14 @@ const Home = () => {
             {products.men.length > 0 ? (
               products.men.map(product => (
                 <div key={product.id} className="product-card">
-                  <img src={product.imageUrl} alt={product.name} />
-                  <h3>{product.name}</h3>
-                  <p>${product.price}</p>
-                  <button className="add-to-cart-btn">Add to Cart</button>
+                  <Link to={`/product/${product.id}`}>
+                    <img src={product.imageUrl} alt={product.name} />
+                    <h3>{product.name}</h3>
+                    <p>${product.price}</p>
+                  </Link>
+                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+                    Add to Cart
+                  </button>
                 </div>
               ))
             ) : (
@@ -99,10 +106,14 @@ const Home = () => {
             {products.women.length > 0 ? (
               products.women.map(product => (
                 <div key={product.id} className="product-card">
-                  <img src={product.imageUrl} alt={product.name} />
-                  <h3>{product.name}</h3>
-                  <p>${product.price}</p>
-                  <button className="add-to-cart-btn">Add to Cart</button>
+                  <Link to={`/product/${product.id}`}>
+                    <img src={product.imageUrl} alt={product.name} />
+                    <h3>{product.name}</h3>
+                    <p>${product.price}</p>
+                  </Link>
+                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+                    Add to Cart
+                  </button>
                 </div>
               ))
             ) : (
@@ -115,10 +126,14 @@ const Home = () => {
             {products.kid.length > 0 ? (
               products.kid.map(product => (
                 <div key={product.id} className="product-card">
-                  <img src={product.imageUrl} alt={product.name} />
-                  <h3>{product.name}</h3>
-                  <p>${product.price}</p>
-                  <button className="add-to-cart-btn">Add to Cart</button>
+                  <Link to={`/product/${product.id}`}>
+                    <img src={product.imageUrl} alt={product.name} />
+                    <h3>{product.name}</h3>
+                    <p>${product.price}</p>
+                  </Link>
+                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
+                    Add to Cart
+                  </button>
                 </div>
               ))
             ) : (

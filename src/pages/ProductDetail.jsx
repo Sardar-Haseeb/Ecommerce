@@ -11,6 +11,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [addedToCart, setAddedToCart] = useState(false); // State to track if product is added to cart
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -37,6 +38,7 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product); // Call addToCart from context
+      setAddedToCart(true); // Set the state to true
     }
   };
 
@@ -58,9 +60,14 @@ const ProductDetail = () => {
           <h1 className="product-name">{product.name}</h1>
           <p className="product-description">{product.description}</p>
           <p className="product-price">Price: ${product.price}</p>
-          <button className="add-to-cart-button" onClick={handleAddToCart}>
-            Add to Cart
+          <button
+            className="add-to-cart-button"
+            onClick={handleAddToCart}
+            disabled={addedToCart} // Disable button if product is added
+          >
+            {addedToCart ? 'Added to Cart' : 'Add to Cart'}
           </button>
+          {addedToCart && <p className="success-message">Product added to cart!</p>} {/* Success message */}
         </div>
       </div>
     </div>

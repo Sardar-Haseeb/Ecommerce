@@ -30,7 +30,7 @@ const Header = () => {
       </nav>
 
       {/* Uncomment for Login Button if needed */}
-      {/* <Link to="/login" className="header-login-button">Login</Link> */}
+      <Link to="/adminpanal" className="header-login-button">Admin Panal</Link>
     </header>
   );
 };
