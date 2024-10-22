@@ -59,9 +59,9 @@ const ProductDetail = () => {
         </div>
         <div className="product-details-container">
           <h1 className="product-name">{product.name}</h1>
-          <p className="product-description">{product.description}</p>
           <p className="product-price">Price: ${product.price}</p>
-          <p className="product-description text-gray-600 mb-6">{product.description}</p>
+          <p className="product-description">{product.description}</p>
+          {/* <p className="product-description text-gray-600 mb-6">{product.description}</p> */}
 
           <button
             className="add-to-cart-button"

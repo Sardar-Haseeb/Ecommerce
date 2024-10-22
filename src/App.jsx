@@ -15,7 +15,7 @@ import Checkout from "./pages/Checkout";
 
 const App = () => {
   return (
-    <CartProvider> {/* Wrap the application with CartProvider */}
+    <CartProvider > {/* Wrap the application with CartProvider */}
       <Router>
         <Header />
         <Routes>
