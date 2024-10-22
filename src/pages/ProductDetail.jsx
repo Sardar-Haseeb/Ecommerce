@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { CartContext } from '../context/CartContext'; // Import CartContext
+import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -60,6 +61,8 @@ const ProductDetail = () => {
           <h1 className="product-name">{product.name}</h1>
           <p className="product-description">{product.description}</p>
           <p className="product-price">Price: ${product.price}</p>
+          <p className="product-description text-gray-600 mb-6">{product.description}</p>
+
           <button
             className="add-to-cart-button"
             onClick={handleAddToCart}
