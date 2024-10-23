@@ -1,4 +1,3 @@
-// src/components/ManageOrders.jsx
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase'; // Adjust the import based on your project structure
@@ -8,9 +7,9 @@ const ManageOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [searchTerm, setSearchTerm] = useState(''); // New state for search input
-  const [sortCriteria, setSortCriteria] = useState('orderId'); // Default sorting criteria
-  const [sortDirection, setSortDirection] = useState('asc'); // Default sorting direction
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortCriteria, setSortCriteria] = useState('orderId');
+  const [sortDirection, setSortDirection] = useState('asc');
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -34,26 +33,24 @@ const ManageOrders = () => {
   }, []);
 
   const handleDelete = async (orderId) => {
-    try {
-      const orderDoc = doc(db, 'orders', orderId);
-      await deleteDoc(orderDoc);
-      setOrders(orders.filter(order => order.id !== orderId)); // Update state to remove the deleted order
-    } catch (err) {
-      setError('Failed to delete order');
-      console.error(err);
+    if (window.confirm('Are you sure you want to delete this order?')) {
+      try {
+        const orderDoc = doc(db, 'orders', orderId);
+        await deleteDoc(orderDoc);
+        setOrders(orders.filter(order => order.id !== orderId));
+      } catch (err) {
+        setError('Failed to delete order');
+        console.error(err);
+      }
     }
   };
 
-  // Filtering logic
-  const filteredOrders = orders.filter(order => {
-    return (
-      order.fullName.toLowerCase().includes(searchTerm.toLowerCase()) || // Filter by full name
-      order.email.toLowerCase().includes(searchTerm.toLowerCase()) || // Filter by email
-      order.id.toLowerCase().includes(searchTerm.toLowerCase()) // Filter by order ID
-    );
-  });
+  const filteredOrders = orders.filter(order => (
+    order.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    order.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    order.id.toLowerCase().includes(searchTerm.toLowerCase())
+  ));
 
-  // Sorting logic
   const sortedOrders = [...filteredOrders].sort((a, b) => {
     let comparison = 0;
     switch (sortCriteria) {
@@ -77,7 +74,7 @@ const ManageOrders = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="error-message">{error}</div>;
   }
 
   return (
@@ -87,7 +84,7 @@ const ManageOrders = () => {
         type="text"
         placeholder="Search by ID, Name, or Email"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
+        onChange={(e) => setSearchTerm(e.target.value)}
         className="search-input"
       />
       <div className="sorting-controls">
@@ -116,10 +113,12 @@ const ManageOrders = () => {
               <th>Order ID</th>
               <th>Full Name</th>
               <th>Email</th>
+              <th>Phone  Number</th>
+
               <th>Address</th>
               <th>Items</th>
               <th>Total Price</th>
-              <th>Actions</th> {/* New column for actions */}
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -128,6 +127,8 @@ const ManageOrders = () => {
                 <td>{order.id}</td>
                 <td>{order.fullName}</td>
                 <td>{order.email}</td>
+                <td>{order.phone}</td>
+
                 <td>{order.address}</td>
                 <td>
                   {order.items.map(item => (

@@ -1,10 +1,10 @@
+// src/components/AddProducts.jsx
 import React, { useState, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import { db } from '../firebase'; // Firestore configuration
 import Compressor from 'compressorjs';
-import './AddProducts.css'; // Import CSS for styling
 
 const AddProducts = () => {
     const [name, setName] = useState('');
@@ -108,25 +108,27 @@ const AddProducts = () => {
     };
 
     return (
-        <div className="add-products">
-            <h1 className="add-products-title">Add Products</h1>
-            {error && <p className="error-message">{error}</p>}
-            <form onSubmit={handleSubmit} className="add-products-form">
-                <div className="form-group">
-                    <label>Product Name:</label>
+        <div style={styles.container}>
+            <h1 style={styles.title}>Add Products</h1>
+            {error && <p style={styles.error}>{error}</p>}
+            <form onSubmit={handleSubmit} style={styles.form}>
+                <div style={styles.formGroup}>
+                    <label style={styles.label}>Product Name:</label>
                     <input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        style={styles.input}
                     />
                 </div>
-                <div className="form-group">
-                    <label>Category:</label>
+                <div style={styles.formGroup}>
+                    <label style={styles.label}>Category:</label>
                     <select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         required
+                        style={styles.input}
                     >
                         <option value="">Select Category</option>
                         {categories.map((cat) => (
@@ -136,33 +138,106 @@ const AddProducts = () => {
                         ))}
                     </select>
                 </div>
-                <div className="form-group">
-                    <label>Price:</label>
+                <div style={styles.formGroup}>
+                    <label style={styles.label}>Price:</label>
                     <input
                         type="number"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                         required
+                        style={styles.input}
                     />
                 </div>
-                <div className="form-group">
-                    <label>Description:</label>
+                <div style={styles.formGroup}>
+                    <label style={styles.label}>Description:</label>
                     <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
+                        style={styles.textarea}
                     />
                 </div>
-                <div className="form-group">
-                    <label>Product Image:</label>
-                    <input type="file" accept="image/*" onChange={handleImageUpload} required />
+                <div style={styles.formGroup}>
+                    <label style={styles.label}>Product Image:</label>
+                    <input type="file" accept="image/*" onChange={handleImageUpload} required style={styles.input} />
                 </div>
-                <button type="submit" disabled={isLoading} className="submit-button">
+                <button type="submit" disabled={isLoading} style={styles.button}>
                     {isLoading ? 'Adding Product...' : 'Add Product'}
                 </button>
             </form>
         </div>
     );
+};
+
+// Inline styles
+const styles = {
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '30px',
+        borderRadius: '8px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#ffffff',
+        maxWidth: '600px',
+        margin: '50px auto',
+    },
+    title: {
+        marginBottom: '20px',
+        color: '#333',
+        fontSize: '28px',
+        textAlign: 'center',
+    },
+    error: {
+        color: 'red',
+        marginBottom: '10px',
+        fontSize: '14px',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+    },
+    formGroup: {
+        marginBottom: '15px',
+        width: '100%',
+    },
+    label: {
+        marginBottom: '5px',
+        fontSize: '16px',
+        color: '#555',
+    },
+    input: {
+        padding: '10px',
+        margin: '5px 0',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        fontSize: '16px',
+        outline: 'none',
+        transition: 'border-color 0.3s',
+        width: '100%',
+    },
+    textarea: {
+        padding: '10px',
+        margin: '5px 0',
+        border: '1px solid #ccc',
+        borderRadius: '4px',
+        fontSize: '16px',
+        outline: 'none',
+        transition: 'border-color 0.3s',
+        width: '100%',
+        resize: 'vertical',
+    },
+    button: {
+        padding: '12px',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: '#007bff',
+        color: 'white',
+        fontSize: '16px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s, transform 0.2s',
+    },
 };
 
 export default AddProducts;

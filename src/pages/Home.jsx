@@ -1,13 +1,11 @@
-// src/pages/Home.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
-import { Link } from 'react-router-dom'; // Import Link
-import { CartContext } from '../context/CartContext'; // Import CartContext
-import './Home.css'; // Import CSS file
+import { Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
 
 const Home = () => {
-  const { addToCart } = useContext(CartContext); // Use CartContext
+  const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState({ men: [], women: [], kid: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -17,13 +15,12 @@ const Home = () => {
       try {
         const productsCollection = collection(db, 'products');
         const productsSnapshot = await getDocs(productsCollection);
-        
+
         const productsList = productsSnapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
         }));
 
-        // Categorize products based on their category field
         const categorizedProducts = {
           men: productsList.filter(product => product.category === 'Men'),
           women: productsList.filter(product => product.category === 'Women'),
@@ -52,95 +49,382 @@ const Home = () => {
 
   return (
     <>
-      <main className="home">
+      <main className="bg-gray-100 p-6">
         {/* Hero Section */}
-        <section className="hero">
-          <h1>Welcome to Our E-Commerce Store</h1>
-          <p>Shop the latest trends in fashion for men, women, and kids.</p>
-          <button className="shop-now-btn">Shop Now</button>
+        {/* Hero Section with Inline CSS */}
+        <section
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            color: 'white',
+            padding: '10rem 2rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <h1 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>
+            Welcome to Our E-Commerce Store
+          </h1>
+          <p style={{ fontSize: '1.25rem', marginBottom: '2rem', textAlign: 'center' }}>
+            Shop the latest trends in fashion for men, women, and kids.
+          </p>
+          <button
+            style={{
+              backgroundColor: 'black',
+              color: 'white',
+              padding: '0.75rem 2rem',
+              borderRadius: '0.375rem',
+              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+              transition: 'background-color 0.3s ease-in-out',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'gray'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'black'}
+          >
+            Shop Now
+          </button>
         </section>
+
+
 
         {/* Categories Section */}
-        <section className="categories">
-          <div className="category men">
-            <h2>Men's</h2>
-            <p>Explore men's fashion</p>
-            <Link to="/mens" className="shop-link">Shop Now</Link>
+        {/* Categories Section with Inline CSS */}
+        <section
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '2rem',
+            marginTop: '3rem',
+            marginBottom: '3rem',
+          }}
+        >
+          {/* Men's Category */}
+          <div
+            style={{
+              position: 'relative',
+              backgroundImage: "url('https://media.istockphoto.com/id/687572186/photo/handsome-young-man-in-shopping.jpg?s=612x612&w=0&k=20&c=P5__LphyJf3BZd4ha1SKHgzv1UC_7foYccB9L6-29Qo=')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '20rem',
+              borderRadius: '0.5rem',
+              boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transform: 'scale(1)',
+              transition: 'transform 0.3s ease-in-out',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <div style={{ textAlign: 'center', color: 'white', padding: '1rem' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '0.5rem', color: 'white' }}>Men's</h2>
+                <p style={{ marginBottom: '1rem' }}>Explore men's fashion</p>
+                <Link
+                  to="/mens"
+                  style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    padding: '0.5rem 1.5rem',
+                    borderRadius: '0.375rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'background-color 0.3s ease-in-out',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Shop Now
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="category women">
-            <h2>Women's</h2>
-            <p>Explore women's fashion</p>
-            <Link to="/womens" className="shop-link">Shop Now</Link>
+
+          {/* Women's Category */}
+          <div
+            style={{
+              position: 'relative',
+              backgroundImage: "url('https://media.istockphoto.com/id/683740686/photo/shopping-time-young-woman-in-shopping-looking-for-presents-consumerism-shopping-lifestyle.jpg?s=612x612&w=0&k=20&c=FHT4xUsPP8ZTbDScva0BJhLfDaa2oNjqF7JQ1Df7kZM=')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '20rem',
+              borderRadius: '0.5rem',
+              boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transform: 'scale(1)',
+              transition: 'transform 0.3s ease-in-out',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <div style={{ textAlign: 'center', color: 'white', padding: '1rem' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '0.5rem', color: 'white' }}>Women's</h2>
+                <p style={{ marginBottom: '1rem' }}>Explore women's fashion</p>
+                <Link
+                  to="/womens"
+                  style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    padding: '0.5rem 1.5rem',
+                    borderRadius: '0.375rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'background-color 0.3s ease-in-out',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Shop Now
+                </Link>
+              </div>
+            </div>
           </div>
-          <div className="category kid">
-            <h2>Kids</h2>
-            <p>Explore kids' fashion</p>
-            <Link to="/kids" className="shop-link">Shop Now</Link>
+
+          {/* Kids' Category */}
+          <div
+            style={{
+              position: 'relative',
+              backgroundImage: "url('https://t3.ftcdn.net/jpg/02/11/82/88/360_F_211828832_OnMaambs24g0vZM8HLjqZ8tU5wH4y1oD.jpg')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              height: '20rem',
+              borderRadius: '0.5rem',
+              boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transform: 'scale(1)',
+              transition: 'transform 0.3s ease-in-out',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <div style={{ textAlign: 'center', color: 'white', padding: '1rem' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: '600', marginBottom: '0.5rem', color: 'white' }}>Kids</h2>
+                <p style={{ marginBottom: '1rem' }}>Explore kids' fashion</p>
+                <Link
+                  to="/kids"
+                  style={{
+                    backgroundColor: 'white',
+                    color: 'black',
+                    padding: '0.5rem 1.5rem',
+                    borderRadius: '0.375rem',
+                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    transition: 'background-color 0.3s ease-in-out',
+                    cursor: 'pointer',
+                    
+                  }}
+                >
+                  Shop Now
+                </Link>
+              </div>
+            </div>
           </div>
         </section>
+
+
+
 
         {/* Products Section */}
-        <section className="products">
-          <h2>Men's Products</h2>
-          <div className="product-list">
-            {products.men.length > 0 ? (
-              products.men.map(product => (
-                <div key={product.id} className="product-card">
-                  <Link to={`/product/${product.id}`}>
-                    <img src={product.imageUrl} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>${product.price}</p>
-                  </Link>
-                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-                    Add to Cart
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>No men's products available.</p>
-            )}
-          </div>
+       {/* Products Section */}
+<section className="products mt-12">
+  <h2 className="text-2xl font-bold mb-6">Men's Products</h2>
+  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {products.men.length > 0 ? (
+      products.men.map(product => (
+        <div
+          key={product.id}
+          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+        >
+          <Link to={`/product/${product.id}`}>
+            <div
+              className="relative"
+              style={{
+                height: '12rem',
+                backgroundImage: `url(${product.imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderBottom: '1px solid #e5e7eb',
+                overflow: 'hidden'
+              }}
+            >
+              <div
+                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              >
+                {/* <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                  View Details
+                </span> */}
+              </div>
+            </div>
+            <div className="p-4">
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
+              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+            </div>
+          </Link>
+          <button
+            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+            style={{
+              borderTop: '1px solid #e5e7eb',
+              borderBottomLeftRadius: '0.5rem',
+              borderBottomRightRadius: '0.5rem'
+            }}
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
+      ))
+    ) : (
+      <p>No men's products available.</p>
+    )}
+  </div>
 
-          <h2>Women's Products</h2>
-          <div className="product-list">
-            {products.women.length > 0 ? (
-              products.women.map(product => (
-                <div key={product.id} className="product-card">
-                  <Link to={`/product/${product.id}`}>
-                    <img src={product.imageUrl} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>${product.price}</p>
-                  </Link>
-                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-                    Add to Cart
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>No women's products available.</p>
-            )}
-          </div>
+  {/* Repeat similar structure for Women's and Kids' Products */}
+</section>
 
-          <h2>Kids' Products</h2>
-          <div className="product-list">
-            {products.kid.length > 0 ? (
-              products.kid.map(product => (
-                <div key={product.id} className="product-card">
-                  <Link to={`/product/${product.id}`}>
-                    <img src={product.imageUrl} alt={product.name} />
-                    <h3>{product.name}</h3>
-                    <p>${product.price}</p>
-                  </Link>
-                  <button className="add-to-cart-btn" onClick={() => addToCart(product)}>
-                    Add to Cart
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p>No kids' products available.</p>
-            )}
-          </div>
-        </section>
+<section className="products mt-12">
+  <h2 className="text-2xl font-bold mb-6">Women's Products</h2>
+  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {products.women.length > 0 ? (
+      products.women.map(product => (
+        <div
+          key={product.id}
+          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+        >
+          <Link to={`/product/${product.id}`}>
+            <div
+              className="relative"
+              style={{
+                height: '12rem',
+                backgroundImage: `url(${product.imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderBottom: '1px solid #e5e7eb',
+                overflow: 'hidden'
+              }}
+            >
+              <div
+                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              >
+                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                  View Details
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
+              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+            </div>
+          </Link>
+          <button
+            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+            style={{
+              borderTop: '1px solid #e5e7eb',
+              borderBottomLeftRadius: '0.5rem',
+              borderBottomRightRadius: '0.5rem'
+            }}
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
+      ))
+    ) : (
+      <p>No women's products available.</p>
+    )}
+  </div>
+
+  {/* Repeat similar structure for Kids' Products */}
+</section>
+
+<section className="products mt-12">
+  <h2 className="text-2xl font-bold mb-6">Kid's Products</h2>
+  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    {products.kid.length > 0 ? (
+      products.kid.map(product => (
+        <div
+          key={product.id}
+          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+        >
+          <Link to={`/product/${product.id}`}>
+            <div
+              className="relative"
+              style={{
+                height: '12rem',
+                backgroundImage: `url(${product.imageUrl})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                borderBottom: '1px solid #e5e7eb',
+                overflow: 'hidden'
+              }}
+            >
+              <div
+                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+              >
+                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
+                  View Details
+                </span>
+              </div>
+            </div>
+            <div className="p-4">
+              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
+              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+            </div>
+          </Link>
+          <button
+            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+            style={{
+              borderTop: '1px solid #e5e7eb',
+              borderBottomLeftRadius: '0.5rem',
+              borderBottomRightRadius: '0.5rem'
+            }}
+            onClick={() => addToCart(product)}
+          >
+            Add to Cart
+          </button>
+        </div>
+      ))
+    ) : (
+      <p>No kids' products available.</p>
+    )}
+  </div>
+</section>
+
       </main>
     </>
   );

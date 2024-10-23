@@ -7,7 +7,6 @@ import SignUp from '../components/SignUp';
 import ManageOrders from '../components/ManageOrders';
 import ManageProducts from '../components/ManageProducts';
 import AddCategory from '../components/AddCategory';
-import './AdminPanal.css'; // Import the CSS file
 
 const AdminPanal = () => {
     const [user, setUser] = useState(null);
@@ -43,26 +42,26 @@ const AdminPanal = () => {
     };
 
     return (
-        <div className="admin-panel">
-            <h1 className="admin-title">Admin Panel</h1>
+        <div style={styles.adminPanel}>
+            <h1 style={styles.adminTitle}>Admin Panel</h1>
             {user ? (
-                <div className="admin-content">
-                    <nav className="admin-nav">
-                        <button className="nav-button" onClick={() => handleTabChange('addProducts')}>
+                <div style={styles.adminContent}>
+                    <nav style={styles.adminNav}>
+                        <button style={styles.navButton} onClick={() => handleTabChange('addProducts')}>
                             Add Products
                         </button>
-                        <button className="nav-button" onClick={() => handleTabChange('manageProducts')}>
+                        <button style={styles.navButton} onClick={() => handleTabChange('manageProducts')}>
                             Manage Products
                         </button>
-                        <button className="nav-button" onClick={() => handleTabChange('addCategory')}>
+                        <button style={styles.navButton} onClick={() => handleTabChange('addCategory')}>
                             Add Category
                         </button>
-                        <button className="nav-button" onClick={() => handleTabChange('manageOrders')}>
+                        <button style={styles.navButton} onClick={() => handleTabChange('manageOrders')}>
                             Manage Orders
                         </button>
                     </nav>
 
-                    <button className="sign-out-button" onClick={handleSignOut}>
+                    <button style={styles.signOutButton} onClick={handleSignOut}>
                         Sign Out
                     </button>
 
@@ -72,10 +71,10 @@ const AdminPanal = () => {
                     {selectedTab === 'manageOrders' && <ManageOrders />}
                 </div>
             ) : (
-                <div className="sign-in-section">
-                    <h2 className="sign-in-title">Please Sign In</h2>
+                <div style={styles.signInSection}>
+                    <h2 style={styles.signInTitle}>Please Sign In</h2>
                     <SignIn />
-                    <button className="signup-button" onClick={handleShowSignUp}>
+                    <button style={styles.signupButton} onClick={handleShowSignUp}>
                         Don't have an account? Sign Up
                     </button>
                     {showSignUp && <SignUp />}
@@ -83,6 +82,80 @@ const AdminPanal = () => {
             )}
         </div>
     );
+};
+
+// Define inline styles
+const styles = {
+    adminPanel: {
+        padding: '20px',
+        maxWidth: '900px',
+        margin: '0 auto',
+        backgroundColor: '#ffffff',
+        borderRadius: '8px',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        fontFamily: 'Arial, sans-serif',
+    },
+    adminTitle: {
+        textAlign: 'center',
+        color: '#333',
+        marginBottom: '20px',
+        fontSize: '24px',
+        fontWeight: 'bold',
+    },
+    adminContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    adminNav: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: '100%',
+        marginBottom: '20px',
+    },
+    navButton: {
+        padding: '12px 20px',
+        fontSize: '16px',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: '#007bff',
+        color: 'white',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+        flex: 1,
+        margin: '0 5px',
+    },
+    navButtonHover: {
+        backgroundColor: '#0056b3',
+    },
+    signOutButton: {
+        padding: '10px 15px',
+        fontSize: '16px',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: '#d9534f',
+        color: 'white',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+        marginTop: '10px',
+    },
+    signInSection: {
+        textAlign: 'center',
+    },
+    signInTitle: {
+        marginBottom: '10px',
+        color: '#333',
+    },
+    signupButton: {
+        padding: '10px 15px',
+        fontSize: '16px',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: 'black',
+        color: 'white',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+    },
 };
 
 export default AdminPanal;

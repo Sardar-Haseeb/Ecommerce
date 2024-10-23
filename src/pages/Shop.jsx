@@ -5,7 +5,6 @@ import { db } from '../firebase';
 import ProductCard from '../components/ProductCard';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
-import './Shop.css';
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -40,24 +39,114 @@ const Shop = () => {
   };
 
   if (loading) {
-    return <div className="loading">Loading products...</div>;
+    return (
+      <div style={{
+        fontSize: '18px',
+        color: '#333',
+        textAlign: 'center',
+        padding: '20px',
+        marginTop: '50px'
+      }}>
+        Loading products...
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="error">{error}</div>;
+    return (
+      <div style={{
+        fontSize: '18px',
+        color: 'red',
+        textAlign: 'center',
+        padding: '20px',
+        marginTop: '50px'
+      }}>
+        {error}
+      </div>
+    );
   }
 
   return (
-    <div className="shop">
-      <h1 className="shop-title">Shop</h1>
-      <div className="product-grid">
+    <div style={{
+      padding: '20px',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      backgroundColor: '#f8f8f8',
+      borderRadius: '8px',
+      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)'
+    }}>
+      <h1 style={{
+        fontSize: '36px',
+        fontWeight: 'bold',
+        marginBottom: '30px',
+        textAlign: 'center',
+        color: '#333'
+      }}>
+        Shop
+      </h1>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: '20px'
+      }}>
         {products.map(product => (
-          <ProductCard 
+          <div 
             key={product.id} 
-            product={product} 
-            onAddToCart={addToCart}
-            onCardClick={handleCardClick}
-          />
+            style={{
+              backgroundColor: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+              overflow: 'hidden',
+              transition: 'transform 0.2s',
+              cursor: 'pointer'
+            }}
+            onClick={() => handleCardClick(product.id)}
+          >
+            <img 
+              src={product.imageUrl} 
+              alt={product.name} 
+              style={{
+                width: '100%',
+                height: '200px',
+                objectFit: 'cover'
+              }} 
+            />
+            <div style={{ padding: '15px' }}>
+              <h3 style={{
+                fontWeight: '600',
+                fontSize: '18px',
+                margin: '10px 0',
+                color: '#333'
+              }}>
+                {product.name}
+              </h3>
+              <p style={{
+                color: '#666',
+                fontSize: '16px',
+                margin: '5px 0'
+              }}>
+                ${product.price}
+              </p>
+              <button 
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  backgroundColor: '#333',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.3s'
+                }}
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click
+                  addToCart(product);
+                }}
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </div>

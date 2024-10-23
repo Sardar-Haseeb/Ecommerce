@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { ref, deleteObject, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
-import './ManageProducts.css'; // Import the CSS file
 
 const ManageProducts = () => {
     const [products, setProducts] = useState([]);
@@ -11,6 +10,7 @@ const ManageProducts = () => {
     const [editingProduct, setEditingProduct] = useState(null);
     const [updatedProduct, setUpdatedProduct] = useState({ name: '', category: '', price: '' });
     const [newImage, setNewImage] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -36,6 +36,7 @@ const ManageProducts = () => {
         setEditingProduct(product);
         setUpdatedProduct({ name: product.name, category: product.category, price: product.price });
         setNewImage(null);
+        setIsModalOpen(true); // Open modal on edit click
     };
 
     const handleImageUpload = (e) => {
@@ -74,6 +75,7 @@ const ManageProducts = () => {
                     : product
             );
             setProducts(updatedProducts);
+            setIsModalOpen(false); // Close modal after update
             setEditingProduct(null);
         } catch (err) {
             console.error('Error updating product:', err);
@@ -108,30 +110,112 @@ const ManageProducts = () => {
         return <p>{error}</p>;
     }
 
+    const containerStyle = {
+        padding: '20px',
+        maxWidth: '800px',
+        margin: '0 auto',
+    };
+
+    const headerStyle = {
+        fontSize: '24px',
+        textAlign: 'center',
+        marginBottom: '20px',
+    };
+
+    const productGridStyle = {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gap: '20px',
+    };
+
+    const productCardStyle = {
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        padding: '15px',
+        boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+        textAlign: 'center',
+    };
+
+    const productNameStyle = {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        margin: '10px 0',
+    };
+
+    const productCategoryStyle = {
+        margin: '5px 0',
+    };
+
+    const productPriceStyle = {
+        margin: '5px 0',
+        color: '#555',
+    };
+
+    const buttonStyle = {
+        backgroundColor: '#007bff',
+        color: '#fff',
+        border: 'none',
+        padding: '10px 15px',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        margin: '5px',
+    };
+
+    const deleteButtonStyle = {
+        ...buttonStyle,
+        backgroundColor: '#dc3545',
+    };
+
+    const modalStyle = {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        right: '0',
+        bottom: '0',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: isModalOpen ? 'flex' : 'none',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: '1000',
+    };
+
+    const modalContentStyle = {
+        backgroundColor: '#fff',
+        padding: '20px',
+        borderRadius: '8px',
+        maxWidth: '500px',
+        width: '100%',
+    };
+
+    const closeModalButtonStyle = {
+        ...buttonStyle,
+        backgroundColor: '#dc3545',
+    };
+
     return (
-        <div className="container">
-            <h1 className="header">Manage Products</h1>
+        <div style={containerStyle}>
+            <h1 style={headerStyle}>Manage Products</h1>
             {products.length === 0 ? (
                 <p>No products found.</p>
             ) : (
-                <div className="product-grid">
+                <div style={productGridStyle}>
                     {products.map((product) => (
-                        <div key={product.id} className="product-card">
-                            <h2 className="product-name">{product.name}</h2>
-                            <p className="product-category">Category: {product.category}</p>
-                            <p className="product-price">Price: ${product.price}</p>
+                        <div key={product.id} style={productCardStyle}>
+                            <h2 style={productNameStyle}>{product.name}</h2>
+                            <p style={productCategoryStyle}>Category: {product.category}</p>
+                            <p style={productPriceStyle}>Price: ${product.price}</p>
                             {product.imageUrl && (
                                 <img
                                     src={product.imageUrl}
                                     alt={product.name}
-                                    className="product-image"
+                                    style={{ width: '100%', borderRadius: '4px' }}
                                 />
                             )}
-                            <button className="button" onClick={() => handleEditClick(product)}>
+                            <button style={buttonStyle} onClick={() => handleEditClick(product)}>
                                 Edit
                             </button>
                             <button
-                                className="button delete-button"
+                                style={deleteButtonStyle}
                                 onClick={() => handleDeleteProduct(product.id, product.imageUrl)}
                             >
                                 Delete
@@ -141,8 +225,9 @@ const ManageProducts = () => {
                 </div>
             )}
 
-            {editingProduct && (
-                <div className="edit-form">
+            {/* Modal for editing product */}
+            <div style={modalStyle}>
+                <div style={modalContentStyle}>
                     <h2>Edit Product</h2>
                     <form onSubmit={handleUpdateProduct}>
                         <div>
@@ -176,13 +261,17 @@ const ManageProducts = () => {
                             <label>Replace Image:</label>
                             <input type="file" onChange={handleImageUpload} accept="image/*" />
                         </div>
-                        <button type="submit" className="button">Save Changes</button>
-                        <button type="button" onClick={() => setEditingProduct(null)} className="button" style={{ marginLeft: '10px' }}>
+                        <button type="submit" style={buttonStyle}>Save Changes</button>
+                        <button 
+                            type="button" 
+                            onClick={() => { setEditingProduct(null); setIsModalOpen(false); }} 
+                            style={closeModalButtonStyle}
+                        >
                             Cancel
                         </button>
                     </form>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

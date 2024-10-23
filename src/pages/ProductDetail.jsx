@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { CartContext } from '../context/CartContext'; // Import CartContext
-import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -44,37 +43,106 @@ const ProductDetail = () => {
   };
 
   if (loading) {
-    return <div>Loading product details...</div>;
+    return <div style={styles.loading}>Loading product details...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div style={styles.error}>{error}</div>;
   }
 
   return (
-    <div className="product-detail-container">
-      <div className="product-detail-grid">
-        <div className="product-image-container">
-          <img src={product.imageUrl} alt={product.name} className="product-image" />
+    <div style={styles.productDetailContainer}>
+      <div style={styles.productDetailGrid}>
+        <div style={styles.productImageContainer}>
+          <img src={product.imageUrl} alt={product.name} style={styles.productImage} />
         </div>
-        <div className="product-details-container">
-          <h1 className="product-name">{product.name}</h1>
-          <p className="product-price">Price: ${product.price}</p>
-          <p className="product-description">{product.description}</p>
-          {/* <p className="product-description text-gray-600 mb-6">{product.description}</p> */}
+        <div style={styles.productDetailsContainer}>
+          <h1 style={styles.productName}>{product.name}</h1>
+          <p style={styles.productPrice}>Price: ${product.price}</p>
+          <p style={styles.productDescription}>{product.description}</p>
 
           <button
-            className="add-to-cart-button"
+            style={styles.addToCartButton}
             onClick={handleAddToCart}
             disabled={addedToCart} // Disable button if product is added
           >
             {addedToCart ? 'Added to Cart' : 'Add to Cart'}
           </button>
-          {addedToCart && <p className="success-message">Product added to cart!</p>} {/* Success message */}
+          {addedToCart && <p style={styles.successMessage}>Product added to cart!</p>} {/* Success message */}
         </div>
       </div>
     </div>
   );
+};
+
+// Define inline styles
+const styles = {
+  productDetailContainer: {
+    padding: '20px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    backgroundColor: '#f8f8f8',
+    borderRadius: '8px',
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+  },
+  productDetailGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '20px',
+  },
+  productImageContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  productImage: {
+    maxWidth: '100%',
+    height: 'auto',
+    borderRadius: '8px',
+  },
+  productDetailsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  productName: {
+    fontSize: '24px',
+    margin: '0 0 10px',
+    color: '#333',
+  },
+  productPrice: {
+    fontSize: '20px',
+    margin: '0 0 15px',
+    color: '#333',
+  },
+  productDescription: {
+    fontSize: '16px',
+    margin: '0 0 20px',
+    color: '#666',
+  },
+  addToCartButton: {
+    backgroundColor: '#5cb85c',
+    color: 'white',
+    border: 'none',
+    padding: '10px 15px',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    transition: 'background-color 0.2s',
+  },
+  successMessage: {
+    marginTop: '10px',
+    color: '#5cb85c',
+  },
+  loading: {
+    textAlign: 'center',
+    fontSize: '20px',
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center',
+    fontSize: '20px',
+  },
 };
 
 export default ProductDetail;
