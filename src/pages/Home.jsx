@@ -255,10 +255,13 @@ const Home = () => {
 
 
         {/* Products Section */}
-       {/* Products Section */}
-<section className="products mt-12">
-  <h2 className="text-2xl font-bold mb-6">Men's Products</h2>
-  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+{/* Products Section */}
+<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Men's Products</h2>
+  <div
+    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8" // Adjusted for 4 columns on large screens
+    style={{ maxWidth: '1200px', margin: '0 auto' }}
+  >
     {products.men.length > 0 ? (
       products.men.map(product => (
         <div
@@ -282,9 +285,7 @@ const Home = () => {
                 className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                {/* <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                  View Details
-                </span> */}
+                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
               </div>
             </div>
             <div className="p-4">
@@ -309,13 +310,15 @@ const Home = () => {
       <p>No men's products available.</p>
     )}
   </div>
-
-  {/* Repeat similar structure for Women's and Kids' Products */}
 </section>
 
-<section className="products mt-12">
-  <h2 className="text-2xl font-bold mb-6">Women's Products</h2>
-  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+{/* Repeat similarly for Women's and Kid's Products Section */}
+<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Women's Products</h2>
+  <div
+    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
+    style={{ maxWidth: '1200px', margin: '0 auto' }}
+  >
     {products.women.length > 0 ? (
       products.women.map(product => (
         <div
@@ -339,9 +342,7 @@ const Home = () => {
                 className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                  View Details
-                </span>
+                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
               </div>
             </div>
             <div className="p-4">
@@ -366,13 +367,14 @@ const Home = () => {
       <p>No women's products available.</p>
     )}
   </div>
-
-  {/* Repeat similar structure for Kids' Products */}
 </section>
 
-<section className="products mt-12">
-  <h2 className="text-2xl font-bold mb-6">Kid's Products</h2>
-  <div className="product-list grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Kid's Products</h2>
+  <div
+    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
+    style={{ maxWidth: '1200px', margin: '0 auto' }}
+  >
     {products.kid.length > 0 ? (
       products.kid.map(product => (
         <div
@@ -396,9 +398,7 @@ const Home = () => {
                 className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
-                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">
-                  View Details
-                </span>
+                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
               </div>
             </div>
             <div className="p-4">
@@ -424,6 +424,8 @@ const Home = () => {
     )}
   </div>
 </section>
+
+
 
       </main>
     </>
