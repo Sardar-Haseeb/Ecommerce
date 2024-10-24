@@ -257,17 +257,21 @@ const Home = () => {
         {/* Products Section */}
 {/* Products Section */}
 <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
-  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Men's Products</h2>
+  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '' }}>Men's Products</h2>
   <div
-    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8" // Adjusted for 4 columns on large screens
-    style={{ maxWidth: '1200px', margin: '0 auto' }}
+    // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8" // Adjusted for 4 columns on large screens
+    style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '20px' }}
   >
     {products.men.length > 0 ? (
       products.men.map(product => (
         <div
           key={product.id}
           className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+          style={{ border: '1px solid #e5e7eb', cursor: 'pointer', display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '20px' }}
         >
           <Link to={`/product/${product.id}`}>
             <div
@@ -316,8 +320,10 @@ const Home = () => {
 <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
   <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Women's Products</h2>
   <div
-    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
-    style={{ maxWidth: '1200px', margin: '0 auto' }}
+    // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
+    style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '20px' }}
   >
     {products.women.length > 0 ? (
       products.women.map(product => (
