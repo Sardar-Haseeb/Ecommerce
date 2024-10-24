@@ -241,7 +241,7 @@ const Home = () => {
                     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
                     transition: 'background-color 0.3s ease-in-out',
                     cursor: 'pointer',
-                    
+
                   }}
                 >
                   Shop Now
@@ -255,181 +255,209 @@ const Home = () => {
 
 
         {/* Products Section */}
-{/* Products Section */}
-<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
-  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '' }}>Men's Products</h2>
-  <div
-    // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8" // Adjusted for 4 columns on large screens
-    style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: '20px' }}
-  >
-    {products.men.length > 0 ? (
-      products.men.map(product => (
-        <div
-          key={product.id}
-          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          style={{ border: '1px solid #e5e7eb', cursor: 'pointer', display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '20px' }}
-        >
-          <Link to={`/product/${product.id}`}>
-            <div
-              className="relative"
-              style={{
-                height: '12rem',
-                backgroundImage: `url(${product.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderBottom: '1px solid #e5e7eb',
-                overflow: 'hidden'
-              }}
-            >
-              <div
-                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-              >
-                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
-              </div>
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
-            </div>
-          </Link>
-          <button
-            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+        {/* Products Section */}
+        <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+          <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '' }}>Men's Products</h2>
+          <div
+            // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8" // Adjusted for 4 columns on large screens
             style={{
-              borderTop: '1px solid #e5e7eb',
-              borderBottomLeftRadius: '0.5rem',
-              borderBottomRightRadius: '0.5rem'
+              maxWidth: '1200px', margin: '0 auto', display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px'
             }}
-            onClick={() => addToCart(product)}
           >
-            Add to Cart
-          </button>
-        </div>
-      ))
-    ) : (
-      <p>No men's products available.</p>
-    )}
-  </div>
-</section>
+            {products.men.length > 0 ? (
+              products.men.map(product => (
+                <div
+                  key={product.id}
+                  className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                  style={{
+                    border: '1px solid #e5e7eb', cursor: 'pointer', display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                    gap: '20px'
+                  }}
+                >
+                  <Link to={`/product/${product.id}`}>
+                    <div
+                      className="relative"
+                      style={{
+                        height: '12rem',
+                        backgroundImage: `url(${product.imageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderBottom: '1px solid #e5e7eb',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                      >
+                        {/* <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span> */}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2"
+                        style={{
+                          fontWeight: '600',
+                          fontSize: '18px',
+                          margin: '10px 0',
+                          color: '#333'
+                        }}>{product.name}</h3>
+                      <p className="text-gray-500 text-sm mb-4"
+                        style={{
+                          color: '#666',
+                          fontSize: '16px',
+                          margin: '5px 0'
+                        }}>${product.price}</p>
+                    </div>
+                  </Link>
+                  <button
+                    className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+                    style={{
+                      width: '100%',
+                      paddingBottom: '10px',
+                      paddingBottom: '10px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px',
+                      backgroundColor: '#333',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      paddingy: '',
+                      transition: 'background-color 0.3s'
+                    }}
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No men's products available.</p>
+            )}
+          </div>
+        </section>
 
-{/* Repeat similarly for Women's and Kid's Products Section */}
-<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
-  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Women's Products</h2>
-  <div
-    // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
-    style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: '20px' }}
-  >
-    {products.women.length > 0 ? (
-      products.women.map(product => (
-        <div
-          key={product.id}
-          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
-        >
-          <Link to={`/product/${product.id}`}>
-            <div
-              className="relative"
-              style={{
-                height: '12rem',
-                backgroundImage: `url(${product.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderBottom: '1px solid #e5e7eb',
-                overflow: 'hidden'
-              }}
-            >
-              <div
-                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-              >
-                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
-              </div>
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
-            </div>
-          </Link>
-          <button
-            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+        {/* Repeat similarly for Women's and Kid's Products Section */}
+        <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+          <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Women's Products</h2>
+          <div
+            // className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
             style={{
-              borderTop: '1px solid #e5e7eb',
-              borderBottomLeftRadius: '0.5rem',
-              borderBottomRightRadius: '0.5rem'
+              maxWidth: '1200px', margin: '0 auto', display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px'
             }}
-            onClick={() => addToCart(product)}
           >
-            Add to Cart
-          </button>
-        </div>
-      ))
-    ) : (
-      <p>No women's products available.</p>
-    )}
-  </div>
-</section>
+            {products.women.length > 0 ? (
+              products.women.map(product => (
+                <div
+                  key={product.id}
+                  className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                  style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+                >
+                  <Link to={`/product/${product.id}`}>
+                    <div
+                      className="relative"
+                      style={{
+                        height: '12rem',
+                        backgroundImage: `url(${product.imageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderBottom: '1px solid #e5e7eb',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                      >
+                        {/* <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span> */}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
+                      <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+                    </div>
+                  </Link>
+                  <button
+                    className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+                    style={{
+                      borderTop: '1px solid #e5e7eb',
+                      borderBottomLeftRadius: '0.5rem',
+                      borderBottomRightRadius: '0.5rem'
+                    }}
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No women's products available.</p>
+            )}
+          </div>
+        </section>
 
-<section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
-  <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Kid's Products</h2>
-  <div
-    className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
-    style={{ maxWidth: '1200px', margin: '0 auto' }}
-  >
-    {products.kid.length > 0 ? (
-      products.kid.map(product => (
-        <div
-          key={product.id}
-          className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
-        >
-          <Link to={`/product/${product.id}`}>
-            <div
-              className="relative"
-              style={{
-                height: '12rem',
-                backgroundImage: `url(${product.imageUrl})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderBottom: '1px solid #e5e7eb',
-                overflow: 'hidden'
-              }}
-            >
-              <div
-                className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-              >
-                <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span>
-              </div>
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-              <p className="text-gray-500 text-sm mb-4">${product.price}</p>
-            </div>
-          </Link>
-          <button
-            className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
-            style={{
-              borderTop: '1px solid #e5e7eb',
-              borderBottomLeftRadius: '0.5rem',
-              borderBottomRightRadius: '0.5rem'
-            }}
-            onClick={() => addToCart(product)}
+        <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
+          <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Kid's Products</h2>
+          <div
+            className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
+            style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '20px'}}
           >
-            Add to Cart
-          </button>
-        </div>
-      ))
-    ) : (
-      <p>No kids' products available.</p>
-    )}
-  </div>
-</section>
+            {products.kid.length > 0 ? (
+              products.kid.map(product => (
+                <div
+                  key={product.id}
+                  className="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                  style={{ border: '1px solid #e5e7eb', cursor: 'pointer' }}
+                >
+                  <Link to={`/product/${product.id}`}>
+                    <div
+                      className="relative"
+                      style={{
+                        height: '12rem',
+                        backgroundImage: `url(${product.imageUrl})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        borderBottom: '1px solid #e5e7eb',
+                        overflow: 'hidden'
+                      }}
+                    >
+                      <div
+                        className="absolute inset-0 transition-opacity duration-300 bg-black bg-opacity-0 hover:bg-opacity-30"
+                        style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                      >
+                        {/* <span className="text-white opacity-0 hover:opacity-100 transition-opacity duration-300 text-sm font-medium">View Details</span> */}
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
+                      <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+                    </div>
+                  </Link>
+                  <button
+                    className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
+                    style={{
+                      borderTop: '1px solid #e5e7eb',
+                      borderBottomLeftRadius: '0.5rem',
+                      borderBottomRightRadius: '0.5rem'
+                    }}
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p>No kids' products available.</p>
+            )}
+          </div>
+        </section>
 
 
 
