@@ -92,7 +92,6 @@ const Home = () => {
 
 
         {/* Categories Section */}
-        {/* Categories Section with Inline CSS */}
         <section
           style={{
             display: 'grid',
@@ -255,7 +254,6 @@ const Home = () => {
 
 
         {/* Products Section */}
-        {/* Products Section */}
         <section className="products mt-12" style={{ padding: '2rem 0', backgroundColor: '#f9fafb' }}>
           <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '' }}>Men's Products</h2>
           <div
@@ -300,16 +298,20 @@ const Home = () => {
                       <h3 className="font-semibold text-lg text-gray-900 mb-2"
                         style={{
                           fontWeight: '600',
+                          textAlign: 'center',
                           fontSize: '18px',
                           margin: '10px 0',
-                          color: '#333'
+                          color: '#333',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none '
                         }}>{product.name}</h3>
-                      <p className="text-gray-500 text-sm mb-4"
+                      <p className=""
                         style={{
                           color: '#666',
                           fontSize: '16px',
-                          margin: '5px 0'
-                        }}>${product.price}</p>
+                          margin: '5px 0',
+                          textDecorationLine: 'none',
+                        }}>Price: ${product.price}</p>
                     </div>
                   </Link>
                   <button
@@ -378,16 +380,39 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-                      <p className="text-gray-500 text-sm mb-4">${product.price}</p>
-                    </div>
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2"
+                        style={{
+                          fontWeight: '600',
+                          textAlign: 'center',
+                          fontSize: '18px',
+                          margin: '10px 0',
+                          color: '#333',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none '
+                        }}>{product.name}</h3>
+                      <p className=""
+                        style={{
+                          color: '#666',
+                          fontSize: '16px',
+                          margin: '5px 0',
+                          textDecorationLine: 'none',
+                        }}>Price: ${product.price}</p>                    </div>
                   </Link>
                   <button
                     className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
                     style={{
-                      borderTop: '1px solid #e5e7eb',
-                      borderBottomLeftRadius: '0.5rem',
-                      borderBottomRightRadius: '0.5rem'
+                      width: '100%',
+                      paddingBottom: '10px',
+                      paddingBottom: '10px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px',
+                      backgroundColor: '#333',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      paddingy: '',
+                      transition: 'background-color 0.3s'
                     }}
                     onClick={() => addToCart(product)}
                   >
@@ -405,9 +430,11 @@ const Home = () => {
           <h2 className="text-2xl font-bold mb-6" style={{ textAlign: 'center', color: '#1f2937' }}>Kid's Products</h2>
           <div
             className="product-list grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8"
-            style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid',
+            style={{
+              maxWidth: '1200px', margin: '0 auto', display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '20px'}}
+              gap: '20px'
+            }}
           >
             {products.kid.length > 0 ? (
               products.kid.map(product => (
@@ -436,16 +463,40 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-lg text-gray-900 mb-2">{product.name}</h3>
-                      <p className="text-gray-500 text-sm mb-4">${product.price}</p>
+                      <h3 className="font-semibold text-lg text-gray-900 mb-2"
+                        style={{
+                          fontWeight: '600',
+                          textAlign: 'center',
+                          fontSize: '18px',
+                          margin: '10px 0',
+                          color: '#333',
+                          textTransform: 'uppercase',
+                          textDecoration: 'none '
+                        }}>{product.name}</h3>
+                      <p className=""
+                        style={{
+                          color: '#666',
+                          fontSize: '16px',
+                          margin: '5px 0',
+                          textDecorationLine: 'none',
+                        }}>Price: ${product.price}</p>
                     </div>
                   </Link>
                   <button
                     className="w-full px-4 py-3 bg-black text-white hover:bg-gray-800 transition-colors duration-300"
                     style={{
-                      borderTop: '1px solid #e5e7eb',
-                      borderBottomLeftRadius: '0.5rem',
-                      borderBottomRightRadius: '0.5rem'
+                      width: '100%',
+                      paddingBottom: '10px',
+                      paddingBottom: '10px',
+                      paddingTop: '10px',
+                      paddingBottom: '10px',
+                      backgroundColor: '#333',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      paddingy: '',
+                      transition: 'background-color 0.3s'
                     }}
                     onClick={() => addToCart(product)}
                   >
